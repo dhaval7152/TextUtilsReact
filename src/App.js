@@ -8,8 +8,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
+
 function App() {
   const [mode,setMode]=useState('light');//Whether dark mode is enabled or not
   const [alert,setAlert]=useState(null);
@@ -27,7 +27,7 @@ function App() {
   const toggleMode=()=>{
     if(mode==='light'){
       setMode('dark');
-      document.body.style.backgroudColor='#212429';
+      document.body.style.backgroundColor='#020202d1';
       document.body.style.color='white';
       showAlert("Dark Mode has been Enabled","success")
       document.title="TextUtils - Dark Mode"
@@ -38,7 +38,6 @@ function App() {
       // }, 1000);
       // setInterval(() => {
       //   document.title="TextUtils Is Amazing ";
-
       // }, 2000);
     }
     else{
@@ -57,14 +56,9 @@ function App() {
     <Alert alert={alert}/>
     <div className="container my-3">
         <Routes>
-          {/* Use of Exact 
-          /users----------->Component 1
-          /users/home----------->Component 2
-
-           */}
-            <Route exact path="/about" element={<About/>}>
+            <Route exact path="/about" element={<About mode={mode}/>}>
             </Route>
-            <Route exact path="/" element={ <TextForm showAlert={showAlert} Heading="Enter the text for Anaylze Below" mode={mode}/>}>
+            <Route exact path="/TextUtilsReact" element={<TextForm showAlert={showAlert} Heading="Try TextUtils- Word Counter,Character Counter,Remove Extra Space And More" mode={mode}/>}>
             </Route>
         </Routes>
     </div>
